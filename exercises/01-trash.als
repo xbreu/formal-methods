@@ -4,6 +4,9 @@
 /// The model has 3 unary predicates (sets), File, Trash and Protected, the
 /// latter two a sub-set of File. There is a binary predicate, link, a sub-set
 /// of File x File.
+///
+/// The unsolved exercises and interface for running the file online can be
+/// found at http://alloy4fun.inesctec.pt/zA2MMSGy6iW8Mihep
 
 // The set of files in the file system.
 sig File {

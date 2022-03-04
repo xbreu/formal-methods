@@ -6,6 +6,9 @@
 /// predicates, Tutors a sub-set of Person x Person, and Teaches a sub-set of
 /// Person x Teaches. There is also a ternary predicate Groups, sub-set of
 /// Class x Person x Group.
+///
+/// The unsolved exercises and interface for running the file online can be
+/// found at http://alloy4fun.inesctec.pt/Pdvipvrpr5hg7JKbs
 
 // The registered persons.
 sig Person  {
