@@ -113,6 +113,8 @@ pred inv14 {
 // Assuming a universe of 3 persons, the tutoring chain of every person
 // eventually reaches a Teacher.
 pred inv15 {
-
+  all p1 : Person | some p2, p3 : Person |
+  (p2->p1 in Tutors) and ((p2 in Teacher) or
+  (p3->p2 in Tutors) and ((p3 in Teacher) or
+  (p1->p3 in Tutors) and  (p1 in Teacher)))
 }
-
