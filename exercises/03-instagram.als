@@ -1,3 +1,6 @@
+/// The unsolved exercises and interface for running the file online can be
+/// found at http://alloy4fun.inesctec.pt/Sb4ZFxbpoLgMo2Nhh
+
 // ----------------------------------------------------------------------------
 // Definitions
 // ----------------------------------------------------------------------------
