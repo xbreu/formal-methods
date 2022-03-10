@@ -10,6 +10,10 @@
 /// The unsolved exercises and interface for running the file online can be
 /// found at http://alloy4fun.inesctec.pt/Pdvipvrpr5hg7JKbs
 
+// ----------------------------------------------------------------------------
+// Definitions
+// ----------------------------------------------------------------------------
+
 // The registered persons.
 sig Person  {
   // Each person tutors a set of persons.
@@ -32,6 +36,10 @@ sig Teacher in Person  {}
 
 // Some persons are students.
 sig Student in Person  {}
+
+// ----------------------------------------------------------------------------
+// Properties
+// ----------------------------------------------------------------------------
 
 // Every person is a student.
 pred inv1 {
