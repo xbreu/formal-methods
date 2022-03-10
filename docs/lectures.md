@@ -24,4 +24,4 @@
 
 #### Further Reading
 
-- [Alloy hands-on introduction](https://haslab.github.io/formal-software-design/) 🔗
+- [🔗 Alloy hands-on introduction](https://haslab.github.io/formal-software-design/)
