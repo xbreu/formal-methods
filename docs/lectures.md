@@ -12,7 +12,7 @@
 
 - [📝 Mars code](../materials/mars-code.pdf)
 
-## Second Week
+## Second and Third Week
 
 - [🧑‍🏫 Structural design with Alloy](../materials/structural-design-with-alloy.pdf)
 
