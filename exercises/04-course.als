@@ -1,87 +1,107 @@
 /// The unsolved exercises and interface for running the file online can be
-/// found at http://alloy4fun.inesctec.pt/fRhYhhBqaGGezzmsY
+/// found at http://alloy4fun.inesctec.pt/aGLwjkC4HDq9ckpcA
+
+open util/ordering[Grade]
 
 // ----------------------------------------------------------------------------
 // Definitions
 // ----------------------------------------------------------------------------
 
-sig Workstation {
-  workers : set Worker,
-  succ : set Workstation
+sig Person {
+	teaches : set Course,
+	enrolled : set Course,
+	projects : set Project
 }
 
-one sig begin, end in Workstation {}
+sig Professor, Student in Person {}
 
-sig Worker {}
-
-sig Human, Robot extends Worker {}
-
-abstract sig Product {
-  parts : set Product
+sig Course {
+	projects : set Project,
+	grades : Person -> Grade
 }
 
-sig Material extends Product {}
+sig Project {}
 
-sig Component extends Product {
-  workstation : set Workstation
-}
-
-sig Dangerous in Product {}
+sig Grade {}
 
 // ----------------------------------------------------------------------------
 // Properties
 // ----------------------------------------------------------------------------
 
-// Workers are either human or robots.
+// Only students can be enrolled in courses.
 pred inv1 {
-  Worker in (Human + Robot)
+
 }
 
-// Every workstation has workers and every worker works in one workstation.
+// Only professors can teach courses.
 pred inv2 {
-  all w : Workstation | some w . workers
-  all w : Worker | one workers . w
+
 }
 
-// Every component is assembled in one workstation.
+// Courses must have teachers.
 pred inv3 {
-  all c : Component | one c . workstation
+
 }
 
-// Components must have parts and materials have no parts.
+// Projects are proposed by one course.
 pred inv4 {
-  parts . Product = Component
+
 }
 
-// Humans and robots cannot work together.
+// Only students work on projects and
+// projects must have someone working on them.
 pred inv5 {
-  all w : Workstation | (w . workers in Human) or (w . workers in Robot)
+
 }
 
-// Components cannot be their own parts.
+// Students only work on projects of courses they are enrolled in.
 pred inv6 {
-  no c : Component | c in (c . ^parts)
+
 }
 
-// Components built of dangerous parts are also dangerous.
+// Students work on at most one project per course.
 pred inv7 {
-  ^parts.Dangerous in Dangerous
+
 }
 
-// Dangerous components cannot be assembled by humans.
+// A professor cannot teach herself.
 pred inv8 {
-  all c : Component | (c in Dangerous) => (c . workstation . workers) in Robot
+
 }
 
-// The workstations form a single line between begin and end.
+// A professor cannot teach colleagues.
 pred inv9 {
-  succ in Workstation lone -> lone Workstation
-  Workstation in (begin . *succ)
-  no (end . succ)
+
 }
 
-// The parts of a component must be assembled before it in the production line.
+// Only students have grades.
 pred inv10 {
-  all c, p : Component | (p in c . parts) =>
-  (c . workstation) in (p . workstation . ^succ)
+
+}
+
+// Students only have grades in courses they are enrolled.
+pred inv11 {
+
+}
+
+// Students have at most one grade per course.
+pred inv12 {
+
+}
+
+// A student with the highest mark in a course must
+// have worked on a project on that course.
+pred inv13 {
+
+}
+
+// A student cannot work with the same student in different projects.
+pred inv14 {
+
+}
+
+// Students working on the same project in a course cannot have
+// marks differing by more than one unit.
+pred inv15 {
+
 }
