@@ -17,3 +17,7 @@
 - [🧑‍🏫 Structural design with Alloy](../materials/structural-design-with-alloy.pdf)
 
 - [📄 Alloy hands-on introduction 🔗](https://haslab.github.io/formal-software-design/)
+
+## Fourth Week
+
+- [🧑‍🏫 Protocol design with Alloy](../materials/protocol-design-with-alloy.pdf)
