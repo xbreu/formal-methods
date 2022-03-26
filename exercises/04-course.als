@@ -73,7 +73,7 @@ pred inv8 {
 
 // A professor cannot teach colleagues.
 pred inv9 {
-  all p : Professor | no (p . teaches . ~enrolled) & Professor
+
 }
 
 // Only students have grades.
@@ -88,7 +88,7 @@ pred inv11 {
 
 // Students have at most one grade per course.
 pred inv12 {
-  all s:Student, c:Course | lone s.(c.grades)
+  all s : Student, c : Course | lone s . (c . grades)
 }
 
 // A student with the highest mark in a course must
@@ -99,7 +99,7 @@ pred inv13 {
 
 // A student cannot work with the same student in different projects.
 pred inv14 {
-  all disj s1, s2:Student | lone (s1.projects & s2.projects)
+  all disj s1, s2 : Student | lone (s1 . projects & s2 . projects)
 }
 
 // Students working on the same project in a course cannot have
