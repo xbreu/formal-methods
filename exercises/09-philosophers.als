@@ -1,28 +1,28 @@
-/// Modelo do jantar dos filósofos
+/// Model for a philosopher group dinner
 
 // ----------------------------------------------------------------------------
 // Definitions
 // ----------------------------------------------------------------------------
 
-// As "coisas" à volta da mesa
-abstract sig Coisa {
-  prox : one Coisa
+// The "things" that are around the table.
+abstract sig Thing {
+  next : one Thing
 }
 
-// Garfos que cada filósofo tem na mão
-sig Filosofo extends Coisa {
-  var garfos : set Garfo
+// Forks that each philosopher has in hand.
+sig Philosopher extends Thing {
+  var forks : set Fork
 }
 
-sig Garfo extends Coisa {}
+sig Fork extends Thing {}
 
-// A mesa é redonda, ou seja, as coisas formam um anel
-// Os garfos e os filósofos estão intercalados
-fact Mesa {
+// The table is round, which means that the things form a ring.
+// And the forks and the philosophers are interspersed.
+fact Table {
   always {
-    (all c : Coisa | Coisa in c.^prox)
-    Filosofo . prox in Garfo
-    Garfo . prox in Filosofo
+    (all t : Thing | Thing in t.^next)
+    Philosopher . next in Fork
+    Fork . next in Philosopher
   }
 }
 
@@ -30,46 +30,47 @@ fact Mesa {
 // Properties
 // ----------------------------------------------------------------------------
 
-// O mesmo garfo nunca pode estar na mão de dois filósofos
-assert GarfosNaMao {
+// The same fork can never be in the hand of two different philosophers.
+assert ForksInHand {
   always (
-    garfos in Filosofo one -> Garfo
+    forks in Philosopher one -> Fork
   )
 }
 
-// Qualquer filósofo que pega num garfo vai conseguir comer
-assert SempreQuePegaCome {
+// Any philosophers that takes one fork will be able to eat.
+assert EverytimeOneTakesOneEats {
   always (
-    all f : Filosofo | f in garfos . Garfo =>
-    eventually f not in garfos . Garfo
+    all p : Philosopher | p in forks . Fork =>
+    eventually p not in forks . Fork
   )
 }
 
-// O sistema não pode bloquear numa situação em que só é possível pensar
-assert SemBloqueio {
+// The system cannot enter in a deadlock state, where the philosophers can
+// only think.
+assert NoDeadlock {
 
 }
 
-check GarfosNaMao for 6
-check SempreQuePegaCome for 6
-check SemBloqueio for 6
+check ForksInHand for 6
+check EverytimeOneTakesOneEats for 6
+check NoDeadlock for 6
 
 // ----------------------------------------------------------------------------
 // Events
 // ----------------------------------------------------------------------------
 
-// Um filosofo pode comer se já tiver os dois garfos junto a si e pousa os
-// garfos depois
-pred come [f : Filosofo] {
+// A philosopher can eat if they already have two forks in hand, and they
+// release the forks after eating.
+pred eat[p : Philosopher] {
   // Guards
-  #(f . garfos) = 2
+  #(p . forks) = 2
 
   // Effects
-  garfos' = garfos - (f <: garfos)
+  forks' = forks - (p <: forks)
 }
 
-// Um filósofo pode pegar num dos garfos que estejam pousados junto a si
-pred pega [f : Filosofo] {
+// A philosopher can take one of the forks that are close to they.
+pred take[p : Philosopher] {
   // Guards
 
   // Effects
@@ -77,23 +78,23 @@ pred pega [f : Filosofo] {
   // Frame conditions
 }
 
-// Para além de comer ou pegar em garfos os filósofos podem pensar
-pred pensa [f : Filosofo] {
-  garfos' = garfos
+// Beyond eating and taking forks, the philosophers can think.
+pred think[p : Philosopher] {
+  forks' = forks
 }
 
-// No inicio os garfos estão todos pousados
-// Depois os filósfos só podem comer, pegar ou pensar
-fact Comportamento {
-  no garfos
-  always (some f : Filosofo | come[f] or pega[f] or pensa[f])
+// In the initial state, the forks are all released, after that, the
+// philosophers can eat, take a fork or think.
+fact Behaviour {
+  no forks
+  always (some p : Philosopher | eat[p] or take[p] or think[p])
 }
 
 // ----------------------------------------------------------------------------
 // Scenarios
 // ----------------------------------------------------------------------------
 
-// Especifique um cenário com 4 filósofos onde todos conseguem comer
+// Scenario where all the 4 philosophers get to eat.
 run Exemplo {
 
 }

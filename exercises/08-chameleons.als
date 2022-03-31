@@ -1,9 +1,9 @@
-/// Modelo de uma colónia de camaleões onde o número de camaleões é fixo mas
-/// onde a cor de cada camaleão pode mudar de acordo com as seguintes regras:
-/// - As cores possíveis são Verde, Azul e Amarelo;
-/// - Se 2 camaleões de cores diferentes se encontram mudam ambos para a
-///   terceira cor;
-/// - As cores só se alteram na situação acima.
+/// Model of a community of chameleons, where there's a fixed number of
+/// chameleons, but their colours can change according to the following rules:
+/// - The possible colours are: green, blue and yellow;
+/// - If two chameleons with different colours meet, both change to the other
+///   colour;
+/// - The colours can only change in the event above.
 
 // ----------------------------------------------------------------------------
 // Definitions
@@ -21,22 +21,22 @@ one sig Green, Blue, Yellow extends Colour {}
 // Properties
 // ----------------------------------------------------------------------------
 
-// Se os camaleoes ficarem todos da mesma cor, as cores nunca mais mudam.
-assert Estabilidade {
+// If the chameleons all have the same color, they will never change again.
+assert Stability {
   always (
     one (Chameleon . colour) => always colour' = colour
   )
 }
 
-// Se inicialmente há um camaleao verde e nenhum azul então não é possível que
-// a colónia fique toda amarela.
-assert NaoConvergencia {
+// If initially there is one green chameleon and no blue one, then, it is not
+// possible for the community to be all yellow.
+assert NoConvergence {
   one (colour . Green) and no (colour . Blue) =>
   always Chameleon . colour != Yellow
 }
 
-check Estabilidade for 5
-check NaoConvergencia for 5
+check Stability for 5
+check NoConvergence for 5
 
 // ----------------------------------------------------------------------------
 // Operations
@@ -58,7 +58,7 @@ pred encounter[x, y : Chameleon] {
   all c : Chameleon - x - y | c.colour' = c.colour
 }
 
-fact Comportamento {
+fact Behaviour {
   always (
     nop
     or some x, y : Chameleon | encounter[x, y]
@@ -81,8 +81,8 @@ fun YellowChameleon : set Chameleon {
   colour . Yellow
 }
 
-// Especifique um cenário onde existe um camaleao que não para de mudar de cor
-// tomando recorrentemente todas as cores possíveis
+// A scenario where there is a chameleon that does not stop changing color,
+// repeatedly taking on all of the possible colors.
 run Example {
   some c : Chameleon | all x : Colour | always eventually c.colour in x
 }
