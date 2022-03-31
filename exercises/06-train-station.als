@@ -43,7 +43,7 @@ pred inv4 {
 
 // Junctions are the tracks with more than one predecessor.
 pred inv5 {
-
+  all t : Track | (t in Junction) <=> (#(t . ~succs) > 1)
 }
 
 // Entry tracks must have a speed signal.
