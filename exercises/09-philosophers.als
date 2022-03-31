@@ -95,6 +95,6 @@ fact Behaviour {
 // ----------------------------------------------------------------------------
 
 // Scenario where all the 4 philosophers get to eat.
-run Exemple {
+run Example {
 
 }
