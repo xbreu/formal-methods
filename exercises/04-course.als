@@ -48,8 +48,8 @@ pred inv4 {
   (this/Course <: projects) in Course one -> Project
 }
 
-// Only students work on projects and
-// projects must have someone working on them.
+// Only students work on projects and projects must have someone working on
+// them.
 pred inv5 {
   (this/Person <: projects) in Student some -> Project
 }
@@ -91,8 +91,8 @@ pred inv12 {
   all s : Student, c : Course | lone s . (c . grades)
 }
 
-// A student with the highest mark in a course must
-// have worked on a project on that course.
+// A student with the highest mark in a course must have worked on a project on
+// that course.
 pred inv13 {
 
 }
@@ -102,8 +102,8 @@ pred inv14 {
   all disj s1, s2 : Student | lone (s1 . projects & s2 . projects)
 }
 
-// Students working on the same project in a course cannot have
-// marks differing by more than one unit.
+// Students working on the same project in a course cannot have marks differing
+// by more than one unit.
 pred inv15 {
 
 }

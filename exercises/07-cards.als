@@ -20,15 +20,14 @@ sig Client {
 // Properties
 // ----------------------------------------------------------------------------
 
-// Os clientes nunca podem deter cartões unissued.
+// Clients can never have unissued cards.
 assert NoUnissuedCards {
   always (
     no cards.status.Unissued
   )
 }
 
-// Ao longo da sua existência um cartão nunca pode pertencer a mais do que um
-// cliente.
+// Throughout its existence a card cannot belong to more than one client.
 assert NoSharedCards {
   always (
     all a : Client, c : a.cards | always (
@@ -36,6 +35,9 @@ assert NoSharedCards {
     )
   )
 }
+
+check NoUnissuedCards
+check NoSharedCards
 
 // ----------------------------------------------------------------------------
 // Initial State
@@ -53,10 +55,7 @@ fact Init {
 // Operations
 // ----------------------------------------------------------------------------
 
-check NoUnissuedCards
-check NoSharedCards
-
-// Operação de emitir um cartão para um cliente.
+// Emit a card to a client.
 pred emit [c : Card, a : Client] {
   // Guards
   historically (
@@ -71,7 +70,7 @@ pred emit [c : Card, a : Client] {
   all d : Card - c | d.status' = d.status
 }
 
-// Operação de cancelar um cartão.
+// Cancel a card.
 pred cancel [c : Card] {
   // Guards
   c.status in Issued
@@ -102,13 +101,9 @@ fact Traces {
 // Scenarios
 // ----------------------------------------------------------------------------
 
-// Especifique um cenário onde 3 cartões são emitidos a pelo menos 2 clientes e
-// são todos inevitavelmente cancelados, usando os scopes para controlar a
-// cardinalidade das assinaturas.
-// Tente também definir um theme onde os cartões emitidos são verdes e os
-// cancelados são vermelhos, ocultando depois toda a informação que seja
-// redundante.
-// Pode introduzir definições auxiliares no modelo se necessário.
+// Scenario where 3 cards are emited to at least 2 clients and all are
+// eventually canceled, using scopes to control the cardinality of the
+// signatures.
 run Example {
   eventually (
     Card.status = Cancelled
