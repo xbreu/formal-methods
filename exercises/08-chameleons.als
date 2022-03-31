@@ -23,13 +23,16 @@ one sig Green, Blue, Yellow extends Colour {}
 
 // Se os camaleoes ficarem todos da mesma cor, as cores nunca mais mudam.
 assert Estabilidade {
-
+  always (
+    one (Chameleon . colour) => always colour' = colour
+  )
 }
 
 // Se inicialmente há um camaleao verde e nenhum azul então não é possível que
 // a colónia fique toda amarela.
 assert NaoConvergencia {
-
+  one (colour . Green) and no (colour . Blue) =>
+  always Chameleon . colour != Yellow
 }
 
 check Estabilidade for 5
@@ -44,14 +47,12 @@ pred nop {
 }
 
 pred encounter[x, y : Chameleon] {
+  // Guards
+  x.colour != y.colour
+
   // Effects
-  not (x.colour = y.colour) => (
-    (x.colour' = Colour - x.colour - y.colour)
-    and (y.colour' = Colour - x.colour - y.colour)
-  ) else (
-    (x.colour' = x.colour)
-    and (y.colour' = y.colour)
-  )
+  x.colour' = Colour - x.colour - y.colour
+  y.colour' = x.colour'
 
   // Frame conditions
   all c : Chameleon - x - y | c.colour' = c.colour
@@ -60,7 +61,7 @@ pred encounter[x, y : Chameleon] {
 fact Comportamento {
   always (
     nop
-    or some disj x, y : Chameleon | encounter[x, y]
+    or some x, y : Chameleon | encounter[x, y]
   )
 }
 
@@ -83,9 +84,5 @@ fun YellowChameleon : set Chameleon {
 // Especifique um cenário onde existe um camaleao que não para de mudar de cor
 // tomando recorrentemente todas as cores possíveis
 run Example {
-  some c : Chameleon | always (
-    (eventually c.colour in Green)
-    and (eventually c.colour in Yellow)
-    and (eventually c.colour in Blue)
-  )
+  some c : Chameleon | all x : Colour | always eventually c.colour in x
 }
