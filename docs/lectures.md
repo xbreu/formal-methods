@@ -18,6 +18,6 @@
 
 - [📄 Alloy hands-on introduction 🔗](https://haslab.github.io/formal-software-design/)
 
-## Fourth Week
+## Fourth and Fifth Week
 
 - [🧑‍🏫 Protocol design with Alloy](../materials/protocol-design-with-alloy.pdf)
