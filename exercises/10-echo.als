@@ -42,18 +42,28 @@ fact SemLacetes {
 
 // O grafo definido pela relação adj é não orientado.
 fact NaoOrientado {
-
+  always {
+    adj = ~adj
+  }
 }
 
 // O grafo definido pela relação adj é ligado.
 fact Ligado {
-
+  always {
+    all disj x, y : Node | y in (x . ^adj)
+  }
 }
 
 // Inicialmente rcvd, parent e children estão vazias e o initiator envia um
 // Ping para todos os vizinhos
 fact init {
-
+  no rcvd
+  no parent
+  no children
+  all n : Node | n in initiator . adj and {
+    n . inbox = { m : Message | m . type in Ping and m . from = initiator}
+    #{n . inbox} = 1
+  } or (n not in initiator . adj and no n . inbox)
 }
 
 // ----------------------------------------------------------------------------
@@ -93,7 +103,7 @@ fact transitions {
 // ----------------------------------------------------------------------------
 
 // Algumas invariantes:
-// - O initiatior nunca tem pai;
+// - O initiator nunca tem pai;
 // - O pai tem sempre que ser um dos vizinhos;
 // - Um nó só pode ser filho do seu pai.
 assert Invariantes {
