@@ -73,7 +73,7 @@ pred inv8 {
 
 // A professor cannot teach colleagues.
 pred inv9 {
-
+  all p : Professor, c : p . teaches | no (c . ~teaches - p) & (p . teaches . ~enrolled)
 }
 
 // Only students have grades.
