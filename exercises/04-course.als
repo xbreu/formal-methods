@@ -73,7 +73,8 @@ pred inv8 {
 
 // A professor cannot teach colleagues.
 pred inv9 {
-  all p : Professor, c : p . teaches | no (c . ~teaches - p) & (p . teaches . ~enrolled)
+  all p : Professor, c : p . teaches |
+  no (c . ~teaches - p) & (p . teaches . ~enrolled)
 }
 
 // Only students have grades.
@@ -92,9 +93,12 @@ pred inv12 {
 }
 
 // A student with the highest mark in a course must have worked on a project on
-// that course.
+// that course. TODO
 pred inv13 {
-
+  // all c : Course | some s : (c . ~enrolled) | {
+  //   max[Person . (c . grades)] = (s . (c . grades))
+  //   some (c . projects & s . projects)
+  // }
 }
 
 // A student cannot work with the same student in different projects.
@@ -103,7 +107,9 @@ pred inv14 {
 }
 
 // Students working on the same project in a course cannot have marks differing
-// by more than one unit.
+// by more than one unit. TODO
 pred inv15 {
-
+  // all c : Course, p : c . projects, disj s1, s2 : p . ~(Person <: projects) |
+  // (s1 . (c . grades)) . prev =  (s2 . (c . grades)) or
+  // (s2 . (c . grades)) . prev =  (s1 . (c . grades))
 }
