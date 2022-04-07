@@ -21,3 +21,7 @@
 ## Fourth and Fifth Week
 
 - [🧑‍🏫 Protocol design with Alloy](../materials/protocol-design-with-alloy.pdf)
+
+## Sixth Week
+
+- [🧑‍🏫 Mastering Alloy](../materials/mastering-alloy.pdf)
