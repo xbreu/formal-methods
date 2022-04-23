@@ -25,3 +25,7 @@
 ## Sixth Week
 
 - [🧑‍🏫 Mastering Alloy](../materials/mastering-alloy.pdf)
+
+## Seventh Week
+
+- [🧑‍🏫 Model Checking](../materials/model-checking.pdf)
