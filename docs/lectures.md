@@ -12,13 +12,13 @@
 
 - [📝 Mars code](../materials/mars-code.pdf)
 
-## Second and Third Week
+## Second and Third Weeks
 
 - [🧑‍🏫 Structural design with Alloy](../materials/structural-design-with-alloy.pdf)
 
 - [📄 Alloy hands-on introduction 🔗](https://haslab.github.io/formal-software-design/)
 
-## Fourth and Fifth Week
+## Fourth and Fifth Weeks
 
 - [🧑‍🏫 Protocol design with Alloy](../materials/protocol-design-with-alloy.pdf)
 
