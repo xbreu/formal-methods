@@ -29,3 +29,7 @@
 ## Seventh Week
 
 - [🧑‍🏫 Model Checking](../materials/model-checking.pdf)
+
+## Eighth Week
+
+- [🧑‍🏫 Hoare Logic](../materials/hoare-logic.pdf)
