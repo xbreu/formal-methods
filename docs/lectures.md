@@ -32,4 +32,4 @@
 
 ## Eighth Week
 
-- [🧑‍🏫 Hoare Logic](../materials/hoare-logic.pdf)
+- [🧑‍🏫 Program Verification](../materials/program-verification.pdf)
