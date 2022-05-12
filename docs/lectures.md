@@ -33,3 +33,7 @@
 ## Eighth Week
 
 - [🧑‍🏫 Program Verification](../materials/program-verification.pdf)
+
+## Ninth Week
+
+- [🧑‍🏫 Program Verification with Dafny (Part I)](../materials/program-verification-with-dafny-i.pdf)
