@@ -34,6 +34,6 @@
 
 - [🧑‍🏫 Program Verification](../materials/program-verification.pdf)
 
-## Ninth and Tenth Week
+## Ninth to Eleventh Week
 
 - [🧑‍🏫 Program Verification with Dafny](../materials/program-verification-with-dafny.pdf)
