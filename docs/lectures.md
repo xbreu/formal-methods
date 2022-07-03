@@ -12,9 +12,9 @@
 
 - [📝 Mars code](../materials/mars-code.pdf)
 
-- [🏋️ Trash bin](../exercises/01-trash.als)
+- [🏋️ Trash bin](./problems/01-trash.als) - [Solution](../exercises/01-trash.als)
 
-- [🏋️ Classroom](../exercises/02-classroom.als)
+- [🏋️ Classroom](./problems/02-classroom.als) - [Solution](../exercises/02-classroom.als)
 
 ## Second and Third Weeks
 
@@ -22,25 +22,25 @@
 
 - [📄 Alloy hands-on introduction 🔗](https://haslab.github.io/formal-software-design/)
 
-- [🏋️ Instagram](../exercises/03-instagram.als)
+- [🏋️ Instagram](./problems/03-instagram.als) - [Solution](../exercises/03-instagram.als)
 
-- [🏋️ Course and grades (Bonus)](../exercises/04-course.als)
+- [🏋️ Course and grades (Bonus)](./problems/04-course.als) - [Solution](../exercises/04-course.als)
 
-- [🏋️ Production line](../exercises/05-production-line.als)
+- [🏋️ Production line](./problems/05-production-line.als) - [Solution](../exercises/05-production-line.als)
 
-- [🏋️ Train station (Bonus)](../exercises/06-train-station.als)
+- [🏋️ Train station (Bonus)](./problems/06-train-station.als) - [Solution](../exercises/06-train-station.als)
 
 ## Fourth and Fifth Weeks
 
 - [🧑‍🏫 Protocol design with Alloy](../materials/protocol-design-with-alloy.pdf)
 
-- [🏋️ Cards](../exercises/07-cards.als)
+- [🏋️ Cards](./problems/07-cards.als) - [Solution](../exercises/07-cards.als)
 
-- [🏋️ Chameleons](../exercises/08-chameleons.als)
+- [🏋️ Chameleons](./problems/08-chameleons.als) - [Solution](../exercises/08-chameleons.als)
 
-- [🏋️ Philosophers](../exercises/09-philosophers.als)
+- [🏋️ Philosophers](./problems/09-philosophers.als) - [Solution](../exercises/09-philosophers.als)
 
-- [🏋️ Echo (Bonus)](../exercises/10-echo.als)
+- [🏋️ Echo (Bonus)](./problems/10-echo.als) - [Solution](../exercises/10-echo.als)
 
 ## Sixth Week
 
